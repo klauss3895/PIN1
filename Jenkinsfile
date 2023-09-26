@@ -1,5 +1,7 @@
 pipeline {
-  agent any
+  agent {
+         label 'jenkinsDocker'
+    }
 
   options {
     timeout(time: 2, unit: 'MINUTES')
