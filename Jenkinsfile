@@ -1,6 +1,6 @@
 pipeline {
   agent {
-         label 'jenkinsDocker'
+         label 'node docker'
     }
 
   options {
