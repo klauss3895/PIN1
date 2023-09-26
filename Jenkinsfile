@@ -41,8 +41,9 @@ pipeline {
    stage('Deploy Image') {
       steps{
         sh '''
-        docker tag testapp 127.0.0.1:5000/mguazzardo/testapp
-        docker push 127.0.0.1:5000/mguazzardo/testapp   
+        docker login -u admin -p nexus 127.0.0.1:8083
+        docker tag testapp 127.0.0.1:8083/testapp
+        docker push 127.0.0.1:8083/testapp   
         '''
         }
       }
