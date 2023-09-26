@@ -12,9 +12,19 @@ pipeline {
   }
    stages {
    stage('Building image') {
+     steps {
+        script {
+            // Verificar si la carpeta 'webapp' ya existe
+            def webappExists = fileExists('webapp')
+
+            if (!webappExists) {
+                // Si no existe, crear la carpeta
+                sh 'mkdir webapp'
+            }
+        }
+    }
       steps{
           sh '''
-          mkdir webapp 
           cd webapp
           docker build -t testapp .
              '''  
