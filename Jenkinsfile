@@ -25,6 +25,7 @@ pipeline {
    stage('Deploy Image') {
       steps{
         sh '''
+        docker run -d -p 5000:5000 --name dockerregistry registry:latest
         docker tag testapp 127.0.0.1:5000/mguazzardo/testapp
         docker push 127.0.0.1:5000/mguazzardo/testapp   
         '''
